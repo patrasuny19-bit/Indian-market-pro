@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- Candle 1: Red Bearish wick and body -->
+    <path
+        android:pathData="M32,56 L32,82"
+        android:strokeWidth="1.2"
+        android:strokeColor="#FF5252" />
+    <path
+        android:pathData="M28,62 L36,62 L36,76 L28,76 Z"
+        android:fillColor="#FF5252" />
+
+    <!-- Candle 2: Green Bullish wick and body -->
+    <path
+        android:pathData="M48,42 L48,74"
+        android:strokeWidth="1.2"
+        android:strokeColor="#00E676" />
+    <path
+        android:pathData="M44,48 L52,48 L52,68 L44,68 Z"
+        android:fillColor="#00E676" />
+
+    <!-- Candle 3: Tall Green Bullish wick and body -->
+    <path
+        android:pathData="M64,32 L64,66"
+        android:strokeWidth="1.2"
+        android:strokeColor="#00E676" />
+    <path
+        android:pathData="M60,38 L68,38 L68,60 L60,60 Z"
+        android:fillColor="#00E676" />
+
+    <!-- Candle 4: Breakthrough Green Bullish -->
+    <path
+        android:pathData="M80,24 L80,54"
+        android:strokeWidth="1.2"
+        android:strokeColor="#00E676" />
+    <path
+        android:pathData="M76,28 L84,28 L84,46 L76,46 Z"
+        android:fillColor="#00E676" />
+
+    <!-- Ascending Trend Gold Stroke -->
+    <path
+        android:pathData="M24,78 C40,70 56,48 84,26"
+        android:strokeWidth="2.5"
+        android:strokeColor="#FFD700" />
+    <!-- Arrowhead at top-right -->
+    <path
+        android:pathData="M85,25 L75,28 L81,35 Z"
+        android:fillColor="#FFD700" />
+</vector>

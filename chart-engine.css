@@ -1,0 +1,345 @@
+/* MY TRADING CHARTS - TradingView Lightweight Charts v5 Style */
+:root {
+  --bg-primary: #131722;
+  --bg-secondary: #1e222d;
+  --bg-surface: #2a2e39;
+  --border-color: #2a2e39;
+  --text-primary: #d1d4dc;
+  --text-muted: #787b86;
+  --accent-blue: #2962ff;
+  --candle-up: #089981;
+  --candle-down: #f23645;
+  --badge-gold: #f5a623;
+}
+
+[data-theme='light'] {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f0f3fa;
+  --bg-surface: #e0e3eb;
+  --border-color: #e0e3eb;
+  --text-primary: #131722;
+  --text-muted: #787b86;
+  --accent-blue: #2962ff;
+  --candle-up: #089981;
+  --candle-down: #f23645;
+  --badge-gold: #d97706;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  user-select: none;
+}
+
+#app-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+/* Toolbar */
+.chart-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 10px;
+  background-color: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-color);
+  font-size: 11px;
+  overflow-x: auto;
+  white-space: nowrap;
+  gap: 6px;
+  z-index: 10;
+}
+
+.chart-toolbar::-webkit-scrollbar {
+  display: none;
+}
+
+.toolbar-group {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.btn-pill {
+  padding: 4px 8px;
+  border-radius: 4px;
+  border: 1px solid transparent;
+  background-color: transparent;
+  color: var(--text-primary);
+  font-size: 11px;
+  font-weight: 500;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: background-color 0.15s, color 0.15s;
+}
+
+.btn-pill:hover, .btn-pill:active {
+  background-color: var(--bg-surface);
+}
+
+.btn-pill.active {
+  background-color: var(--accent-blue);
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.symbol-selector-btn {
+  background-color: var(--bg-surface);
+  font-weight: 700;
+  padding: 5px 10px;
+  border-radius: 4px;
+  color: #ffffff;
+}
+
+[data-theme='light'] .symbol-selector-btn {
+  color: #131722;
+}
+
+.badge-status {
+  padding: 3px 8px;
+  border-radius: 12px;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.3px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.badge-status.live {
+  background-color: rgba(8, 153, 129, 0.15);
+  color: var(--candle-up);
+  border-color: rgba(8, 153, 129, 0.4);
+}
+
+.badge-status.demo {
+  background-color: rgba(245, 166, 35, 0.15);
+  color: var(--badge-gold);
+  border-color: rgba(245, 166, 35, 0.4);
+}
+
+.pulse-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  animation: pulse 1.4s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(0.9); opacity: 0.8; }
+  50% { transform: scale(1.3); opacity: 1; }
+  100% { transform: scale(0.9); opacity: 0.8; }
+}
+
+/* Chart Area */
+.chart-viewport {
+  position: relative;
+  flex: 1;
+  width: 100%;
+  overflow: hidden;
+}
+
+#chart-element {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Legend */
+.chart-legend {
+  position: absolute;
+  top: 8px;
+  left: 10px;
+  z-index: 15;
+  pointer-events: none;
+  font-size: 11px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.85);
+}
+
+[data-theme='light'] .chart-legend {
+  text-shadow: 0 1px 2px rgba(255,255,255,0.9);
+}
+
+.legend-main-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.legend-symbol {
+  font-weight: 800;
+  font-size: 13px;
+}
+
+.legend-indicators-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+/* Drawing Canvas Overlay */
+#drawing-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 20;
+  pointer-events: none;
+}
+
+#drawing-canvas.drawing-active {
+  pointer-events: auto;
+  cursor: crosshair;
+}
+
+/* Dropdown Modals */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.65);
+  backdrop-filter: blur(4px);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+}
+
+.modal-overlay.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-box {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  width: 100%;
+  max-width: 480px;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 12px 32px rgba(0,0,0,0.5);
+}
+
+.modal-header {
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.modal-search-input {
+  width: 100%;
+  padding: 10px 14px;
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  color: var(--text-primary);
+  font-size: 13px;
+  outline: none;
+}
+
+.segment-pills {
+  display: flex;
+  gap: 6px;
+  padding: 8px 16px;
+  overflow-x: auto;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.instrument-list {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.instrument-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 16px;
+  cursor: pointer;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.instrument-item:hover, .instrument-item:active {
+  background-color: var(--bg-surface);
+}
+
+/* Indicators Menu Popup */
+.indicators-popup {
+  position: absolute;
+  top: 40px;
+  right: 10px;
+  width: 240px;
+  max-height: 340px;
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+  z-index: 50;
+  padding: 8px;
+  overflow-y: auto;
+  display: none;
+}
+
+.indicators-popup.open {
+  display: block;
+}
+
+.indicator-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 11px;
+}
+
+.indicator-row:hover {
+  background-color: var(--bg-surface);
+}
+
+.indicator-row.active {
+  background-color: rgba(41, 98, 255, 0.15);
+  color: var(--accent-blue);
+  font-weight: 600;
+}

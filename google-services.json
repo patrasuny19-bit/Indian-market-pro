@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "196713563445",
+    "project_id": "gen-lang-client-0804882690",
+    "storage_bucket": "gen-lang-client-0804882690.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:196713563445:android:521408b9cd4c31f477b87c",
+        "android_client_info": {
+          "package_name": "com.aistudio.indiamarketpro.fnqtz"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCgIg6OIaVuwafgCviW7J-90RJGcfebMF8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
